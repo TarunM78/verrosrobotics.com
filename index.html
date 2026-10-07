@@ -40,9 +40,10 @@
       </button>
 
       <nav class="nav-links" id="nav-links" aria-label="Primary">
-        <a href="#mission">Mission</a>
-        <a href="#product">Product</a>
-        <a href="#contact">Contact</a>
+        <a href="#mission" data-nav="mission">Mission</a>
+        <a href="#demo" data-nav="demo">Demo</a>
+        <a href="#product" data-nav="product">Product</a>
+        <a href="#contact" data-nav="contact">Contact</a>
         <a class="btn btn-solid btn-sm" href="#contact" data-scroll="contact">Get a Quote</a>
       </nav>
     </div>
@@ -53,7 +54,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-inner reveal">
         <p class="eyebrow">Introducing</p>
-        <h1 id="hero-title">Zero backlash<br>actuators.</h1>
+        <h1 id="hero-title" data-scramble>Zero backlash<br>actuators.</h1>
         <p class="hero-sub">Pushing what is possible in actuation.</p>
         <p class="hero-body">Motor, gearbox, and driver in one precise, fully integrated unit. Built in San Francisco for the next generation of humanoid, legged, and research robots.</p>
         <div class="btn-row">
@@ -63,9 +64,10 @@
       </div>
       <div class="container hero-media reveal">
         <div class="glow" aria-hidden="true"></div>
-        <div class="placeholder placeholder-render" role="img" aria-label="Placeholder for product render">
-          <span class="placeholder-tag">Placeholder</span>
-          <span class="placeholder-text">Product render</span>
+        <div class="visual" id="hero-visual" role="img" aria-label="Abstract point-cloud visual of an actuator housing. Product render coming soon.">
+          <canvas id="hero-canvas"></canvas>
+          <span class="placeholder-tag">Concept visual. Render coming soon</span>
+          <span class="visual-hint" aria-hidden="true">Move your cursor</span>
         </div>
       </div>
     </section>
@@ -74,7 +76,7 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Mission</p>
-          <h2 id="mission-title">Verros exists to push what is possible in the actuator space.</h2>
+          <h2 id="mission-title" data-scramble>Verros exists to push what is possible in the actuator space.</h2>
         </div>
         <div class="cards reveal">
           <article class="card">
@@ -96,17 +98,91 @@
       </div>
     </section>
 
+    <section class="section" id="demo" aria-labelledby="demo-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Interactive</p>
+          <h2 id="demo-title" data-scramble>Backlash, made visible.</h2>
+          <p class="lead">Drag the input dial and reverse direction. A conventional gearbox loses motion every time it changes direction. A Verros actuator does not.</p>
+        </div>
+
+        <div class="demo reveal">
+          <div class="demo-dial demo-input">
+            <p class="demo-label">Input <span class="demo-sub">drag me</span></p>
+            <div class="dial" id="dial-input" role="slider" tabindex="0" aria-label="Input angle" aria-valuemin="-180" aria-valuemax="180" aria-valuenow="0" aria-valuetext="0 degrees">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="92" class="dial-ring"/>
+                <g class="dial-ticks" id="ticks-input"></g>
+                <line x1="100" y1="100" x2="100" y2="22" class="dial-needle" id="needle-input"/>
+                <circle cx="100" cy="100" r="6" class="dial-hub"/>
+                <circle cx="100" cy="22" r="9" class="dial-knob" id="knob-input"/>
+              </svg>
+            </div>
+            <p class="demo-readout"><span id="read-input">0.0</span>&deg;</p>
+          </div>
+
+          <div class="demo-outputs">
+            <div class="demo-dial demo-output">
+              <p class="demo-label">Conventional gearbox <span class="demo-sub">simulated</span></p>
+              <div class="dial dial-small" aria-hidden="true">
+                <svg viewBox="0 0 200 200">
+                  <circle cx="100" cy="100" r="92" class="dial-ring"/>
+                  <g class="dial-ticks" id="ticks-conv"></g>
+                  <path class="dial-deadband" id="deadband-conv" d=""/>
+                  <line x1="100" y1="100" x2="100" y2="22" class="dial-ghost" id="ghost-conv"/>
+                  <line x1="100" y1="100" x2="100" y2="22" class="dial-needle dial-needle-muted" id="needle-conv"/>
+                  <circle cx="100" cy="100" r="6" class="dial-hub"/>
+                </svg>
+              </div>
+              <p class="demo-readout demo-readout-muted"><span id="read-conv">0.0</span>&deg;</p>
+              <p class="demo-error">Position error <strong><span id="err-conv">0.0</span>&deg;</strong></p>
+              <label class="demo-slider">
+                <span>Simulated backlash <output id="backlash-out">2.0</output>&deg;</span>
+                <input type="range" id="backlash" min="0.5" max="6" step="0.1" value="2">
+              </label>
+            </div>
+
+            <div class="demo-dial demo-output demo-verros">
+              <p class="demo-label">Verros actuator</p>
+              <div class="dial dial-small" aria-hidden="true">
+                <svg viewBox="0 0 200 200">
+                  <circle cx="100" cy="100" r="92" class="dial-ring dial-ring-strong"/>
+                  <g class="dial-ticks" id="ticks-verros"></g>
+                  <line x1="100" y1="100" x2="100" y2="22" class="dial-needle" id="needle-verros"/>
+                  <circle cx="100" cy="100" r="6" class="dial-hub"/>
+                </svg>
+              </div>
+              <p class="demo-readout"><span id="read-verros">0.0</span>&deg;</p>
+              <p class="demo-error">Position error <strong>0.0&deg;</strong></p>
+              <p class="demo-note">Output tracks input exactly, in both directions.</p>
+            </div>
+          </div>
+
+          <div class="demo-trace">
+            <p class="demo-label">Command vs output over time</p>
+            <canvas id="trace-canvas" height="160" aria-label="Live trace of input angle against conventional and Verros output angles"></canvas>
+            <div class="demo-legend" aria-hidden="true">
+              <span><i class="leg leg-input"></i>Input</span>
+              <span><i class="leg leg-conv"></i>Conventional</span>
+              <span><i class="leg leg-verros"></i>Verros</span>
+            </div>
+          </div>
+          <p class="demo-footnote">Simulation of the backlash effect only. It does not represent any mechanism and the slider values are illustrative.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="product" aria-labelledby="product-title">
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Product</p>
-          <h2 id="product-title">One unit. Motor, gearbox, driver.</h2>
+          <h2 id="product-title" data-scramble>One unit. Motor, gearbox, driver.</h2>
           <p class="lead">High torque density and zero backlash in a single integrated actuator, built for humanoid, legged, and research platforms.</p>
         </div>
 
         <div class="stats reveal" aria-label="Specifications">
           <div class="stat">
-            <p class="stat-value">0<span class="stat-unit">backlash</span></p>
+            <p class="stat-value"><span id="stat-zero" data-countdown>0</span><span class="stat-unit">backlash</span></p>
             <p class="stat-label">Lost motion at the output</p>
           </div>
           <div class="stat stat-pending">
@@ -143,7 +219,7 @@
     <section class="section section-invert" id="preorder" aria-labelledby="preorder-title">
       <div class="container narrow reveal">
         <p class="eyebrow">Preorders</p>
-        <h2 id="preorder-title">Preorders opening soon</h2>
+        <h2 id="preorder-title" data-scramble>Preorders opening soon</h2>
         <p class="lead">Leave your email and you will be first to know when units are available.</p>
 
         <form class="form form-inline" id="signup-form" novalidate>
@@ -163,7 +239,7 @@
       <div class="container contact-grid reveal">
         <div class="contact-copy">
           <p class="eyebrow">Contact</p>
-          <h2 id="contact-title">Request a quote</h2>
+          <h2 id="contact-title" data-scramble>Request a quote</h2>
           <p class="lead">Tell us about your platform and volume. We reply from <a href="mailto:tarun@verrosrobotics.com">tarun@verrosrobotics.com</a>.</p>
         </div>
 
@@ -221,7 +297,7 @@
           </svg>
           <span class="brand-name">Verros Robotics</span>
         </a>
-        <p class="footer-sub">San Francisco, California</p>
+        <p class="footer-sub">San Francisco, California <span class="footer-clock" id="sf-clock" aria-label="Current time in San Francisco"></span></p>
         <a class="footer-link" href="mailto:tarun@verrosrobotics.com">tarun@verrosrobotics.com</a>
       </div>
       <nav class="footer-nav" aria-label="Footer">
