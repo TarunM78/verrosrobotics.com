@@ -16,6 +16,19 @@
   var $ = function (id) { return document.getElementById(id); };
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(revealEls, function (el) { el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    Array.prototype.forEach.call(revealEls, function (el) { io.observe(el); });
+  }
+
   /* ---------- Footer year ---------- */
   var year = $('year');
   if (year) year.textContent = String(new Date().getFullYear());
@@ -42,7 +55,7 @@
   function scrollToId(id, focusId) {
     var target = $(id);
     if (!target) return;
-    var navHeight = document.querySelector('.nav').offsetHeight || 0;
+    var navHeight = (document.querySelector('.nav-wrap').offsetHeight || 0) + 8;
     var top = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
     window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
     if (history.replaceState) history.replaceState(null, '', '#' + id);
