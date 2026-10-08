@@ -3,6 +3,25 @@
    Layout language: floating frosted nav, centered hero, faint vertical grid lines,
    rounded cards with hairline borders. */
 
+/* Self-hosted Helvetica-class typeface so the site renders identically on every device.
+   "Verros Sans" is a renamed Latin subset of TeX Gyre Heros (GUST Font License); see fonts/. */
+@font-face {
+  font-family: "Verros Sans"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("fonts/verros-sans-regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Verros Sans"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("fonts/verros-sans-bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Verros Sans"; font-style: italic; font-weight: 400; font-display: swap;
+  src: url("fonts/verros-sans-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Verros Sans"; font-style: italic; font-weight: 700; font-display: swap;
+  src: url("fonts/verros-sans-bolditalic.woff2") format("woff2");
+}
+
 :root {
   --black: #000000;
   --white: #ffffff;
@@ -25,8 +44,8 @@
   --field-bg: var(--black);
   --grid: rgba(255, 255, 255, 0.05);
 
-  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --mono: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font: "Verros Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "Verros Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   --container: 1240px;
   --gutter: 16px;

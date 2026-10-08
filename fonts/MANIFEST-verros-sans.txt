@@ -1,0 +1,12 @@
+Verros Sans is a renamed, Latin-subset WOFF2 build of TeX Gyre Heros 2.004
+(Copyright 2006, 2009 for TeX Gyre extensions by B. Jackowski and J.M. Nowacki,
+on behalf of TeX users groups), distributed under the GUST Font License (see LICENSE.txt).
+
+Original file                 -> this file
+texgyreheros-regular.otf      -> verros-sans-regular.woff2
+texgyreheros-bold.otf         -> verros-sans-bold.woff2
+texgyreheros-italic.otf       -> verros-sans-italic.woff2
+texgyreheros-bolditalic.otf   -> verros-sans-bolditalic.woff2
+
+Changes: converted to WOFF2, subset to Latin-1, Latin Extended-A, general punctuation,
+euro, trademark and arrows; family name changed to "Verros Sans". Glyph outlines are unmodified.

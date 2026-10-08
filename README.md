@@ -41,6 +41,12 @@ To receive submissions directly:
 
 The hidden `_gotcha` field is a honeypot. Bots that fill it are dropped client side, and Formspree ignores submissions that include it.
 
+## Typeface
+
+The site self-hosts "Verros Sans" from `fonts/`, a renamed Latin-only WOFF2 subset of TeX Gyre Heros
+(a free Helvetica clone under the GUST Font License), so type renders the same on every device. Regular
+and Bold only; the lighter and medium weights used in the CSS resolve to Regular, and 600 resolves to Bold.
+
 ## Placeholders to replace
 
 - Spec values in the Specifications card (all read "Specs coming soon")
