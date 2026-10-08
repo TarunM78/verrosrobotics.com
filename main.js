@@ -133,7 +133,7 @@
 
       var bad = validate(form);
       if (bad) {
-        errorEl.textContent = bad.type === 'email' ? "That email doesn't look right." : "Looks like a few fields are still empty.";
+        errorEl.textContent = bad.type === 'email' ? 'Please enter a valid email address.' : 'Please fill in every required field.';
         bad.focus();
         return;
       }
@@ -152,7 +152,7 @@
       var endpoint = CONFIG[opts.endpointKey];
       if (!endpoint) {
         mailtoFallback(opts.subject, data);
-        showSuccess("Your email app should pop open with everything filled in. If it doesn't, just email " + CONFIG.CONTACT_EMAIL + ".");
+        showSuccess('Your email app should open with the details prefilled. If it does not, email ' + CONFIG.CONTACT_EMAIL + ' directly.');
         return;
       }
 
@@ -162,7 +162,7 @@
       postJSON(endpoint, data)
         .then(function () { showSuccess(null); })
         .catch(function () {
-          errorEl.textContent = "Hmm, that didn't go through. Email " + CONFIG.CONTACT_EMAIL + " and we'll sort it out.";
+          errorEl.textContent = 'Something went wrong. Please email ' + CONFIG.CONTACT_EMAIL + ' directly.';
         })
         .then(function () { button.disabled = false; button.textContent = label; });
     });
