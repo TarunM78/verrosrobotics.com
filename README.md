@@ -41,10 +41,11 @@ To receive submissions directly:
 
 The hidden `_gotcha` field is a honeypot. Bots that fill it are dropped client side, and Formspree ignores submissions that include it.
 
-## Typeface
+## Typefaces
 
-The site self-hosts "Verros Sans" from `fonts/`, a renamed Latin-only variable WOFF2 build of Space Grotesk
-(SIL Open Font License), weights 300 to 700, so type renders the same on every device.
+Self-hosted from `fonts/` so type renders the same on every device. "Verros Sans" is a renamed Latin subset
+of Barlow (weights 300 to 700) for headlines and copy. "Verros Mono" is a renamed Latin subset of JetBrains Mono
+(variable, 400 to 700) for uppercase labels, captions, buttons, and form fields. Both SIL Open Font License.
 
 ## Placeholders to replace
 

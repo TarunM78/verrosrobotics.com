@@ -1,9 +1,15 @@
-Verros Sans is a renamed, Latin-subset variable WOFF2 build of Space Grotesk (Copyright 2020 The Space
-Grotesk Project Authors, https://github.com/floriankarsten/space-grotesk), licensed under the SIL Open Font
-License 1.1 (see LICENSE.txt). It is renamed because the OFL reserves the original font name for unmodified builds.
+Verros Sans and Verros Mono are renamed, Latin-subset WOFF2 builds of two SIL Open Font License 1.1 fonts
+(see LICENSE.txt). They are renamed because the OFL reserves the original font names for unmodified builds.
 
-Original file              -> this file
-SpaceGrotesk[wght].ttf     -> verros-sans.woff2
+Barlow (Copyright 2017 The Barlow Project Authors, https://github.com/jpt/barlow)
+  Barlow-Light.ttf     -> verros-sans-300.woff2
+  Barlow-Regular.ttf   -> verros-sans-400.woff2
+  Barlow-Medium.ttf    -> verros-sans-500.woff2
+  Barlow-SemiBold.ttf  -> verros-sans-600.woff2
+  Barlow-Bold.ttf      -> verros-sans-700.woff2
 
-Changes: weight axis kept at 300-700; subset to Latin-1, Latin Extended-A, general punctuation, euro,
-trademark and arrows; converted to WOFF2; family name changed to "Verros Sans". Glyph outlines are unmodified.
+JetBrains Mono (Copyright 2020 The JetBrains Mono Project Authors, https://github.com/JetBrains/JetBrainsMono)
+  JetBrainsMono[wght].ttf -> verros-mono.woff2  (variable, weight axis limited to 400-700)
+
+Changes: subset to Latin-1, Latin Extended-A, general punctuation, euro, trademark and arrows; converted to
+WOFF2; family names changed. Glyph outlines are unmodified.

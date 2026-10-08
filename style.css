@@ -2,11 +2,32 @@
    Visual language: flat light-gray page, dark gray type, no borders or rounded corners,
    tiny uppercase tracked labels, huge tight bold headlines, light-weight body copy. */
 
-/* Self-hosted typeface so the site renders identically on every device.
-   "Verros Sans" is a renamed Latin subset of Space Grotesk (SIL OFL 1.1). See fonts/. */
+/* Self-hosted typefaces so the site renders identically on every device (see fonts/).
+   "Verros Sans" is a renamed Latin subset of Barlow (DIN-style industrial grotesk) for headlines and copy.
+   "Verros Mono" is a renamed Latin subset of JetBrains Mono for labels, captions, buttons, and fields. */
 @font-face {
-  font-family: "Verros Sans"; font-style: normal; font-weight: 300 700;
-  font-display: swap; src: url("fonts/verros-sans.woff2") format("woff2");
+  font-family: "Verros Sans"; font-style: normal; font-weight: 300; font-display: swap;
+  src: url("fonts/verros-sans-300.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Verros Sans"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("fonts/verros-sans-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Verros Sans"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("fonts/verros-sans-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Verros Sans"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("fonts/verros-sans-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Verros Sans"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("fonts/verros-sans-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Verros Mono"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("fonts/verros-mono.woff2") format("woff2");
 }
 
 :root {
@@ -23,12 +44,13 @@
   --field-bg: var(--bg-white);
   --on-ink: #ffffff;
 
-  --font: "Verros Sans", "Space Grotesk", Helvetica, Arial, sans-serif;
+  --font: "Verros Sans", "Barlow", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "Verros Mono", "JetBrains Mono", "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace;
 
   --container: 1290px;
   --gutter: 20px;
   --nav-h: 64px;
-  --track: 0.06em;
+  --track: 0.08em;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -53,7 +75,7 @@ a:hover { color: var(--ink); }
 
 :focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
 
-h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--fg); }
+h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.02em; line-height: 0.98; color: var(--fg); }
 p { margin: 0; }
 
 .container {
@@ -86,8 +108,10 @@ p { margin: 0; }
 
 main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 
-/* Uppercase micro label used for nav, eyebrows, captions, buttons */
-.eyebrow, .nav-links a:not(.btn), .nav-toggle, .announce, .card-index, .footer-label, .footer-nav a, .btn {
+/* Uppercase mono micro label used for nav, eyebrows, captions, buttons, fields */
+.eyebrow, .nav-links a:not(.btn), .nav-toggle, .announce, .card-index, .footer-label, .footer-nav a, .btn,
+.field label, .footer-sub, .footer-bottom, .form-error {
+  font-family: var(--mono);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: var(--track);
@@ -155,7 +179,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 }
 .brand-mark { display: block; flex: none; width: 20px; height: 20px; }
 .brand-name {
-  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1;
+  font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1;
 }
 
 .nav-links { display: flex; align-items: center; gap: 32px; }
@@ -216,7 +240,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 .hero { padding: clamp(64px, 9vw, 128px) 0 clamp(56px, 7vw, 96px); }
 .hero-inner { display: flex; flex-direction: column; align-items: flex-start; }
 .hero h1 {
-  font-size: clamp(52px, 9vw, 116px);
+  font-size: clamp(56px, 9.5vw, 124px);
   max-width: 12ch;
 }
 .hero-sub {
@@ -238,7 +262,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 
 /* Sections */
 .section { padding: clamp(72px, 9vw, 120px) 0; }
-.section h2 { font-size: clamp(38px, 5.8vw, 76px); }
+.section h2 { font-size: clamp(40px, 6vw, 80px); }
 
 /* Cards (mission): flat white blocks */
 .cards { display: grid; gap: 2px; }
@@ -249,7 +273,8 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
   background: var(--surface);
 }
 .card-index { display: block; color: var(--subtle); margin-bottom: 64px; }
-.card h3 { font-size: 22px; line-height: 1.1; margin-bottom: 16px; }
+.card-index::before { content: "/ "; }
+.card h3 { font-size: 24px; font-weight: 600; line-height: 1.1; margin-bottom: 16px; }
 .card p { color: var(--fg); font-weight: 300; font-size: 16px; line-height: 1.35; }
 @media (min-width: 720px) and (max-width: 1023px) {
   .card { padding: 24px 20px 32px; }
@@ -269,12 +294,13 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 /* Forms */
 .form { margin-top: 40px; }
 .form input, .form textarea {
+  font-family: var(--mono);
   width: 100%;
   background: var(--field-bg);
   color: var(--ink);
   border: 1px solid var(--line-strong);
   border-radius: 0;
-  font: inherit; font-size: 16px;
+  font-size: 14px; font-weight: 400;
   padding: 12px 14px;
   min-height: 48px;
   transition: border-color 120ms ease;
@@ -292,7 +318,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 }
 
 .field { display: flex; flex-direction: column; gap: 8px; }
-.field label { font-size: 12px; letter-spacing: var(--track); text-transform: uppercase; color: var(--muted); }
+.field label { color: var(--muted); }
 .field-grid { display: grid; gap: 20px; }
 @media (min-width: 640px) {
   .field-grid { grid-template-columns: 1fr 1fr; }
@@ -300,7 +326,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 }
 .form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 28px; }
 
-.form-error { font-size: 13px; color: var(--fg); min-height: 1.2em; }
+.form-error { color: var(--fg); min-height: 1.2em; line-height: 1.4; text-transform: none; letter-spacing: 0; }
 .form-error:empty { display: none; }
 
 .form-success {
@@ -329,14 +355,14 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 .footer-grid { display: grid; gap: 40px; }
 @media (min-width: 720px) { .footer-grid { grid-template-columns: 1.4fr 1fr; } }
 .footer-brand .brand-name { font-size: 12px; }
-.footer-sub { color: var(--subtle); margin-top: 20px; font-size: 12px; letter-spacing: var(--track); text-transform: uppercase; }
+.footer-sub { color: var(--subtle); margin-top: 20px; }
 .footer-link { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 300; text-decoration: none; }
 .footer-link:hover { text-decoration: underline; }
 .footer-nav { display: flex; flex-direction: column; gap: 14px; }
 .footer-nav a { text-decoration: none; color: var(--ink); }
 .footer-nav a:hover { opacity: 0.55; }
 .footer-label { color: var(--subtle); margin-bottom: 6px; }
-.footer-bottom { margin-top: clamp(40px, 5vw, 64px); padding-top: 20px; border-top: 1px solid var(--line); font-size: 12px; letter-spacing: var(--track); text-transform: uppercase; color: var(--subtle); }
+.footer-bottom { margin-top: clamp(40px, 5vw, 64px); padding-top: 20px; border-top: 1px solid var(--line); color: var(--subtle); }
 
 /* Short viewports (landscape phones): compact chrome so the headline stays above the fold */
 @media (max-height: 520px) {
