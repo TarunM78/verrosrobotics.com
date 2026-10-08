@@ -43,9 +43,7 @@ The hidden `_gotcha` field is a honeypot. Bots that fill it are dropped client s
 
 ## Placeholders to replace
 
-- Hero product render (`.placeholder-render` in `index.html`)
 - Spec values in the Specifications card (all read "Specs coming soon")
-- Footer social links (`href="#"` with a `data-placeholder` attribute)
 - Logo: currently a text wordmark plus a simple V mark in `index.html` and `favicon.svg`
 
 ## Content rules
