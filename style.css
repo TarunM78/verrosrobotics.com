@@ -3,10 +3,9 @@
    tiny uppercase tracked labels, huge tight bold headlines, light-weight body copy. */
 
 /* Self-hosted typeface so the site renders identically on every device.
-   "Verros Sans" is a renamed Latin subset of Archivo (SIL OFL 1.1), a grotesk with a width axis:
-   the expanded cut carries headlines and labels, the normal cut carries body copy. See fonts/. */
+   "Verros Sans" is a renamed Latin subset of Space Grotesk (SIL OFL 1.1). See fonts/. */
 @font-face {
-  font-family: "Verros Sans"; font-style: normal; font-weight: 300 800; font-stretch: 100% 125%;
+  font-family: "Verros Sans"; font-style: normal; font-weight: 300 700;
   font-display: swap; src: url("fonts/verros-sans.woff2") format("woff2");
 }
 
@@ -24,9 +23,7 @@
   --field-bg: var(--bg-white);
   --on-ink: #ffffff;
 
-  --font: "Verros Sans", "Archivo", Helvetica, Arial, sans-serif;
-  --wide: 125%;   /* headline and label width */
-  --label-wide: 112%;
+  --font: "Verros Sans", "Space Grotesk", Helvetica, Arial, sans-serif;
 
   --container: 1290px;
   --gutter: 20px;
@@ -56,7 +53,7 @@ a:hover { color: var(--ink); }
 
 :focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
 
-h1, h2, h3 { margin: 0; font-weight: 800; font-stretch: var(--wide); letter-spacing: -0.03em; line-height: 1; color: var(--fg); }
+h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--fg); }
 p { margin: 0; }
 
 .container {
@@ -93,7 +90,6 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 .eyebrow, .nav-links a:not(.btn), .nav-toggle, .announce, .card-index, .footer-label, .footer-nav a, .btn {
   font-size: 12px;
   font-weight: 500;
-  font-stretch: var(--label-wide);
   letter-spacing: var(--track);
   text-transform: uppercase;
   line-height: 1;
@@ -159,7 +155,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 }
 .brand-mark { display: block; flex: none; width: 20px; height: 20px; }
 .brand-name {
-  font-size: 12px; font-weight: 600; font-stretch: var(--wide); letter-spacing: 0.1em; text-transform: uppercase; line-height: 1;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1;
 }
 
 .nav-links { display: flex; align-items: center; gap: 32px; }
@@ -220,7 +216,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 .hero { padding: clamp(64px, 9vw, 128px) 0 clamp(56px, 7vw, 96px); }
 .hero-inner { display: flex; flex-direction: column; align-items: flex-start; }
 .hero h1 {
-  font-size: clamp(48px, 8.5vw, 108px);
+  font-size: clamp(52px, 9vw, 116px);
   max-width: 12ch;
 }
 .hero-sub {
@@ -242,7 +238,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 
 /* Sections */
 .section { padding: clamp(72px, 9vw, 120px) 0; }
-.section h2 { font-size: clamp(36px, 5.4vw, 72px); }
+.section h2 { font-size: clamp(38px, 5.8vw, 76px); }
 
 /* Cards (mission): flat white blocks */
 .cards { display: grid; gap: 2px; }
@@ -311,7 +307,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
   margin-top: 40px; padding: 28px;
   background: var(--surface);
 }
-.success-title { font-size: 22px; font-weight: 800; font-stretch: var(--wide); letter-spacing: -0.02em; margin-bottom: 8px; color: var(--fg); }
+.success-title { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; color: var(--fg); }
 .form-success p + p { color: var(--muted); font-weight: 300; }
 .form-success a { word-break: break-all; }
 

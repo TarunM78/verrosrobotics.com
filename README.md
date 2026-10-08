@@ -43,9 +43,8 @@ The hidden `_gotcha` field is a honeypot. Bots that fill it are dropped client s
 
 ## Typeface
 
-The site self-hosts "Verros Sans" from `fonts/`, a renamed Latin-only variable WOFF2 build of Archivo
-(SIL Open Font License) with weight 300 to 800 and width 100% to 125%. Headlines and uppercase labels use the
-expanded width via `font-stretch`; body copy uses the normal width. One file, so type renders the same everywhere.
+The site self-hosts "Verros Sans" from `fonts/`, a renamed Latin-only variable WOFF2 build of Space Grotesk
+(SIL Open Font License), weights 300 to 700, so type renders the same on every device.
 
 ## Placeholders to replace
 

@@ -1,10 +1,9 @@
-Verros Sans is a renamed, Latin-subset variable WOFF2 build of Archivo (Copyright 2020 The Archivo
-Project Authors, https://github.com/Omnibus-Type/Archivo), licensed under the SIL Open Font License 1.1
-(see LICENSE.txt). It is renamed because the OFL reserves the original font name for unmodified builds.
+Verros Sans is a renamed, Latin-subset variable WOFF2 build of Space Grotesk (Copyright 2020 The Space
+Grotesk Project Authors, https://github.com/floriankarsten/space-grotesk), licensed under the SIL Open Font
+License 1.1 (see LICENSE.txt). It is renamed because the OFL reserves the original font name for unmodified builds.
 
 Original file              -> this file
-Archivo[wdth,wght].ttf     -> verros-sans.woff2
+SpaceGrotesk[wght].ttf     -> verros-sans.woff2
 
-Changes: weight axis limited to 300-800 and width axis to 100-125; subset to Latin-1, Latin Extended-A,
-general punctuation, euro, trademark and arrows; converted to WOFF2; family name changed to "Verros Sans".
-Glyph outlines are unmodified.
+Changes: weight axis kept at 300-700; subset to Latin-1, Latin Extended-A, general punctuation, euro,
+trademark and arrows; converted to WOFF2; family name changed to "Verros Sans". Glyph outlines are unmodified.
