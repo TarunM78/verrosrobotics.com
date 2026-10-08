@@ -41,12 +41,6 @@ To receive submissions directly:
 
 The hidden `_gotcha` field is a honeypot. Bots that fill it are dropped client side, and Formspree ignores submissions that include it.
 
-## Brand assets
-
-`brand/` holds the landscape logo: the V mark beside a "Verros Robotics" wordmark set in Outfit SemiBold,
-with the text converted to outlines so the SVGs need no font. Four SVG variants (white and black on
-transparent, and the same on solid black or white backgrounds) plus 2000px-wide PNG exports of each.
-
 ## Placeholders to replace
 
 - Spec values in the Specifications card (all read "Specs coming soon")
