@@ -10,8 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://verrosrobotics.com/">
   <meta name="theme-color" content="#ececec">
-  <link rel="preload" href="fonts/verros-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/verros-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/verros-sans.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://verrosrobotics.com/">
   <link rel="stylesheet" href="style.css">
@@ -59,7 +58,7 @@
       </div>
     </section>
 
-    <section class="section" id="mission" aria-labelledby="mission-title">
+    <section class="section section-dark" id="mission" aria-labelledby="mission-title">
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Mission</p>
@@ -86,20 +85,24 @@
     </section>
 
     <section class="section section-invert" id="preorder" aria-labelledby="preorder-title">
-      <div class="container narrow reveal">
-        <p class="eyebrow">Preorders</p>
-        <h2 id="preorder-title">Preorders opening soon</h2>
-        <p class="lead">Leave your email and you will be first to know when units are available.</p>
+      <div class="container preorder-grid reveal">
+        <div class="preorder-copy">
+          <p class="eyebrow">Preorders</p>
+          <h2 id="preorder-title">Preorders opening soon</h2>
+          <p class="lead">Leave your email and you will be first to know when units are available.</p>
+        </div>
 
-        <form class="form form-inline" id="signup-form" novalidate>
-          <label class="sr-only" for="signup-email">Email address</label>
-          <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
-          <button class="btn btn-solid" type="submit">Notify me</button>
-          <p class="form-error" id="signup-error" role="alert"></p>
-        </form>
-        <div class="form-success" id="signup-success" role="status" aria-live="polite" hidden>
-          <p class="success-title">You are on the list.</p>
-          <p id="signup-success-detail">We will email you when preorders open.</p>
+        <div class="preorder-form">
+          <form class="form form-inline" id="signup-form" novalidate>
+            <label class="sr-only" for="signup-email">Email address</label>
+            <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+            <button class="btn btn-solid" type="submit">Notify me</button>
+            <p class="form-error" id="signup-error" role="alert"></p>
+          </form>
+          <div class="form-success" id="signup-success" role="status" aria-live="polite" hidden>
+            <p class="success-title">You are on the list.</p>
+            <p id="signup-success-detail">We will email you when preorders open.</p>
+          </div>
         </div>
       </div>
     </section>

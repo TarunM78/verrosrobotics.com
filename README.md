@@ -43,9 +43,9 @@ The hidden `_gotcha` field is a honeypot. Bots that fill it are dropped client s
 
 ## Typeface
 
-The site self-hosts "Verros Sans" from `fonts/`, a renamed Latin-only WOFF2 subset of TeX Gyre Heros
-(GUST Font License), so type renders the same on every device. Regular and Bold only; the light
-weight used for body copy resolves to Regular, as it does on hermeus.com, whose look the site follows.
+The site self-hosts "Verros Sans" from `fonts/`, a renamed Latin-only variable WOFF2 build of Archivo
+(SIL Open Font License) with weight 300 to 800 and width 100% to 125%. Headlines and uppercase labels use the
+expanded width via `font-stretch`; body copy uses the normal width. One file, so type renders the same everywhere.
 
 ## Placeholders to replace
 

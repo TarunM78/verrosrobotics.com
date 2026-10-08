@@ -3,22 +3,11 @@
    tiny uppercase tracked labels, huge tight bold headlines, light-weight body copy. */
 
 /* Self-hosted typeface so the site renders identically on every device.
-   "Verros Sans" is a renamed Latin subset of TeX Gyre Heros (GUST Font License); see fonts/. */
+   "Verros Sans" is a renamed Latin subset of Archivo (SIL OFL 1.1), a grotesk with a width axis:
+   the expanded cut carries headlines and labels, the normal cut carries body copy. See fonts/. */
 @font-face {
-  font-family: "Verros Sans"; font-style: normal; font-weight: 400; font-display: swap;
-  src: url("fonts/verros-sans-regular.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Verros Sans"; font-style: normal; font-weight: 700; font-display: swap;
-  src: url("fonts/verros-sans-bold.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Verros Sans"; font-style: italic; font-weight: 400; font-display: swap;
-  src: url("fonts/verros-sans-italic.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Verros Sans"; font-style: italic; font-weight: 700; font-display: swap;
-  src: url("fonts/verros-sans-bolditalic.woff2") format("woff2");
+  font-family: "Verros Sans"; font-style: normal; font-weight: 300 800; font-stretch: 100% 125%;
+  font-display: swap; src: url("fonts/verros-sans.woff2") format("woff2");
 }
 
 :root {
@@ -29,13 +18,15 @@
   --bg: #ececec;
   --bg-alt: #d9d9d9;
   --bg-white: #ffffff;
-  --bg-footer: #f8f8f8;
   --line: rgba(0, 0, 0, 0.14);
   --line-strong: rgba(0, 0, 0, 0.3);
   --surface: var(--bg-white);
   --field-bg: var(--bg-white);
+  --on-ink: #ffffff;
 
-  --font: "Verros Sans", Helvetica, Arial, sans-serif;
+  --font: "Verros Sans", "Archivo", Helvetica, Arial, sans-serif;
+  --wide: 125%;   /* headline and label width */
+  --label-wide: 112%;
 
   --container: 1290px;
   --gutter: 20px;
@@ -65,7 +56,7 @@ a:hover { color: var(--ink); }
 
 :focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
 
-h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--fg); }
+h1, h2, h3 { margin: 0; font-weight: 800; font-stretch: var(--wide); letter-spacing: -0.03em; line-height: 1; color: var(--fg); }
 p { margin: 0; }
 
 .container {
@@ -78,9 +69,6 @@ p { margin: 0; }
 }
 @media (min-width: 720px) { :root { --gutter: 40px; } }
 @media (min-width: 1100px) { :root { --gutter: 60px; } }
-
-.container.narrow { max-width: 760px; }
-.container.narrow .lead { margin-left: 0; }
 
 .sr-only {
   position: absolute !important;
@@ -104,7 +92,8 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 /* Uppercase micro label used for nav, eyebrows, captions, buttons */
 .eyebrow, .nav-links a:not(.btn), .nav-toggle, .announce, .card-index, .footer-label, .footer-nav a, .btn {
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
+  font-stretch: var(--label-wide);
   letter-spacing: var(--track);
   text-transform: uppercase;
   line-height: 1;
@@ -115,6 +104,22 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
   --bg: var(--bg-white);
   --surface: var(--bg);
   background: var(--bg);
+}
+
+/* Black band: light type on black, dark gray blocks */
+.section-dark, .footer {
+  --bg: #000000;
+  --ink: #ffffff;
+  --on-ink: #000000;
+  --fg: #ececec;
+  --muted: #9a9a9a;
+  --subtle: #6f6d6d;
+  --surface: #141414;
+  --field-bg: #0a0a0a;
+  --line: rgba(255, 255, 255, 0.14);
+  --line-strong: rgba(255, 255, 255, 0.3);
+  background: var(--bg);
+  color: var(--fg);
 }
 
 /* Announcement bar */
@@ -154,7 +159,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 }
 .brand-mark { display: block; flex: none; width: 20px; height: 20px; }
 .brand-name {
-  font-size: 12px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1;
+  font-size: 12px; font-weight: 600; font-stretch: var(--wide); letter-spacing: 0.1em; text-transform: uppercase; line-height: 1;
 }
 
 .nav-links { display: flex; align-items: center; gap: 32px; }
@@ -198,10 +203,10 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
   transition: background-color 140ms ease, color 140ms ease, opacity 140ms ease;
 }
 .btn-sm { min-height: 36px; padding: 0 16px; }
-.btn-solid { background: var(--ink); color: #fff; }
-.btn-solid:hover { background: var(--fg); border-color: var(--fg); color: #fff; }
+.btn-solid { background: var(--ink); color: var(--on-ink); }
+.btn-solid:hover { background: var(--fg); border-color: var(--fg); color: var(--on-ink); }
 .btn-outline { background: transparent; color: var(--ink); }
-.btn-outline:hover { background: var(--ink); color: #fff; }
+.btn-outline:hover { background: var(--ink); color: var(--on-ink); }
 .btn:disabled { opacity: 0.5; cursor: wait; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -215,7 +220,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 .hero { padding: clamp(64px, 9vw, 128px) 0 clamp(56px, 7vw, 96px); }
 .hero-inner { display: flex; flex-direction: column; align-items: flex-start; }
 .hero h1 {
-  font-size: clamp(56px, 9.5vw, 120px);
+  font-size: clamp(48px, 8.5vw, 108px);
   max-width: 12ch;
 }
 .hero-sub {
@@ -237,7 +242,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 
 /* Sections */
 .section { padding: clamp(72px, 9vw, 120px) 0; }
-.section h2 { font-size: clamp(40px, 6vw, 80px); }
+.section h2 { font-size: clamp(36px, 5.4vw, 72px); }
 
 /* Cards (mission): flat white blocks */
 .cards { display: grid; gap: 2px; }
@@ -248,7 +253,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
   background: var(--surface);
 }
 .card-index { display: block; color: var(--subtle); margin-bottom: 64px; }
-.card h3 { font-size: 24px; line-height: 1.1; margin-bottom: 16px; }
+.card h3 { font-size: 22px; line-height: 1.1; margin-bottom: 16px; }
 .card p { color: var(--fg); font-weight: 300; font-size: 16px; line-height: 1.35; }
 @media (min-width: 720px) and (max-width: 1023px) {
   .card { padding: 24px 20px 32px; }
@@ -257,9 +262,13 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
   .card p { font-size: 15px; }
 }
 
-/* Preorder band */
-#preorder .form-inline { margin-left: 0; }
-#preorder .form-success { text-align: left; }
+/* Preorder band: copy left, email form right */
+.preorder-grid { display: grid; gap: 40px; }
+@media (min-width: 900px) {
+  .preorder-grid { grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
+}
+.preorder-form .form, .preorder-form .form-success { margin-top: 0; }
+.preorder-form .form-inline { max-width: none; }
 
 /* Forms */
 .form { margin-top: 40px; }
@@ -302,7 +311,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
   margin-top: 40px; padding: 28px;
   background: var(--surface);
 }
-.success-title { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; color: var(--fg); }
+.success-title { font-size: 22px; font-weight: 800; font-stretch: var(--wide); letter-spacing: -0.02em; margin-bottom: 8px; color: var(--fg); }
 .form-success p + p { color: var(--muted); font-weight: 300; }
 .form-success a { word-break: break-all; }
 
@@ -320,7 +329,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 @media (max-width: 559px) { .panel { padding: 24px 20px; } }
 
 /* Footer */
-.footer { background: var(--bg-footer); padding: clamp(48px, 6vw, 80px) 0 max(32px, env(safe-area-inset-bottom)); }
+.footer { padding: clamp(48px, 6vw, 80px) 0 max(32px, env(safe-area-inset-bottom)); }
 .footer-grid { display: grid; gap: 40px; }
 @media (min-width: 720px) { .footer-grid { grid-template-columns: 1.4fr 1fr; } }
 .footer-brand .brand-name { font-size: 12px; }
@@ -338,7 +347,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
   :root { --nav-h: 52px; }
   .announce { padding-top: 6px; padding-bottom: 6px; }
   .hero { padding-top: 40px; padding-bottom: 40px; }
-  .hero h1 { font-size: clamp(40px, 7.5vw, 72px); }
+  .hero h1 { font-size: clamp(36px, 7vw, 64px); }
   .hero-sub { margin-top: 16px; }
   .hero-body { margin-top: 12px; font-size: 16px; }
   .hero .btn-row { margin-top: 24px; }
