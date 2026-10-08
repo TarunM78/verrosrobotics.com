@@ -268,9 +268,10 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 .hero { padding: clamp(56px, 8vw, 112px) 0 clamp(56px, 7vw, 96px); }
 .hero-inner { display: flex; flex-direction: column; align-items: flex-start; }
 .hero h1 {
-  font-size: clamp(56px, 9.5vw, 124px);
-  max-width: 12ch;
+  font-size: clamp(38px, 5.8vw, 84px);
+  max-width: none;
 }
+@media (min-width: 720px) { .hero h1 { white-space: nowrap; } }
 .hero-sub {
   margin-top: 32px;
   font-size: clamp(18px, 1.8vw, 24px);
@@ -398,7 +399,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
   :root { --nav-h: 54px; --nav-inset: 8px; }
   .announce { padding-top: 6px; padding-bottom: 6px; }
   .hero { padding-top: 40px; padding-bottom: 40px; }
-  .hero h1 { font-size: clamp(36px, 7vw, 64px); }
+  .hero h1 { font-size: clamp(32px, 4.6vw, 56px); }
   .hero-sub { margin-top: 16px; }
   .hero-body { margin-top: 12px; font-size: 16px; }
   .hero .btn-row { margin-top: 24px; }
