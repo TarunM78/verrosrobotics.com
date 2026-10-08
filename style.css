@@ -187,7 +187,7 @@ main, .footer, .announce, .nav-wrap { position: relative; z-index: 1; }
 }
 .nav .brand-mark { display: block; flex: none; width: 24px; height: 24px; }
 .nav .brand-name {
-  font-family: var(--font); font-size: 20px; font-weight: 400; letter-spacing: 0.06em; text-transform: none; line-height: 1;
+  font-family: var(--font); font-size: 18px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1;
 }
 
 .nav-links { display: flex; align-items: center; gap: clamp(20px, 2.4vw, 40px); }
